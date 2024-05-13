@@ -34,7 +34,7 @@ export default function Home() {
           />
         </section>
         <section className="bg-[#F9FBFE] mt-3 h-9/10 flex flex-col justify-between">
-          <section>
+          {/* <section>
             <section className="flex flex-col text-white px-6 py-8 bg-[#425EF0]">
               <strong className="mb-2 text-2xl font-[Pretendard-Bold]">
                 파주 운정 A34
@@ -118,7 +118,7 @@ export default function Home() {
                 <span className="text-[#393D45]">2023.08.10</span>
               </section>
             </section>
-          </section>
+          </section> */}
         </section>
       </section>
       <Map />

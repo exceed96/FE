@@ -22,6 +22,14 @@ const config: Config = {
           "0%, 100%": { backgroundColor: "#2E7CFF" },
           "50%": { backgroundColor: "#ACCBFF" },
         },
+        dropdownSlideIn: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        dropdownSlideOut: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100%)" },
+        },
       },
     },
   },
