@@ -9,7 +9,6 @@ const Header = (): JSX.Element => {
   const navListStyle =
     "font-[Pretendard-SemiBold] text-[#505B6E] px-10 text-2xl cursor-pointer";
 
-  console.log(pathName);
   return (
     <header className="flex items-end">
       <section className="font-[Pretendard-Bold] text-4xl text-[#303948] mr-10">

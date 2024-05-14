@@ -1,38 +1,63 @@
 "use client";
 
-import { useEffect } from "react";
-import SearchIcon from "@/Img/Main/Search.svg";
-import Image from "next/image";
+import { useState, useRef } from "react";
 import Map from "@/components/Main/Map";
-import axios from "axios";
+import SearchMapInput from "@/components/Main/SearchMapInput";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "@/hooks/useAxios";
 
 export default function Home() {
-  const getData = async () => {
-    try {
-      const response = await axios.get("http://15.165.54.47:80/api/v1/main/");
-      console.log(response);
-    } catch (error) {
-      console.log(error);
+  const searchAreaInputRef = useRef(null);
+  const [searchXArea, setSearchXArea] = useState<string>("");
+  const [searchYArea, setSearchYArea] = useState<string>("");
+  const [roadAddress, setRoadAddress] = useState<string>("");
+  const instance = useAxios();
+
+  const fetchApartDatas = async () => {
+    const response = await instance.get("/main/");
+    return response.data;
+  };
+
+  const { data } = useQuery({
+    queryKey: ["apart"],
+    queryFn: fetchApartDatas,
+    initialData: { result: { defectLocs: [] } },
+  });
+
+  const searchAreaApiHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (searchAreaInputRef.current.value) {
+      naver.maps.Service.geocode(
+        {
+          query: searchAreaInputRef.current.value,
+        },
+        function (status, response) {
+          if (status !== naver.maps.Service.Status.OK) {
+            return alert("Something wrong!");
+          }
+          const result = response.v2; // 검색 결과의 컨테이너
+          console.log(result);
+          if (searchAreaInputRef.current.value)
+            searchAreaInputRef.current.value = "";
+          if (!result.addresses.length) {
+            return;
+          } else {
+            setSearchYArea(result.addresses[0].y);
+            setSearchXArea(result.addresses[0].x);
+            setRoadAddress(result.addresses[0].roadAddress);
+          }
+        }
+      );
     }
   };
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <main className="flex flex-col md:flex-row mt-16 h-[calc(100%-80px)]">
       <section className="w-full md:w-1/4 mr-8 flex flex-col">
-        <section className="relative flex items-center h-1/10">
-          <input
-            type="text"
-            className="border-[1px] border-[#6C82F7] border-solid text-[#4764FF] py-2.5 px-4 w-full outline-none"
-          />
-          <Image
-            src={SearchIcon}
-            alt={"location search"}
-            className="absolute right-4"
-          />
-        </section>
+        <SearchMapInput
+          searchAreaInputRef={searchAreaInputRef}
+          searchAreaApiHandler={searchAreaApiHandler}
+        />
         <section className="bg-[#F9FBFE] mt-3 h-9/10 flex flex-col justify-between">
           {/* <section>
             <section className="flex flex-col text-white px-6 py-8 bg-[#425EF0]">
@@ -121,7 +146,12 @@ export default function Home() {
           </section> */}
         </section>
       </section>
-      <Map />
+      <Map
+        y={searchXArea}
+        x={searchYArea}
+        roadAddress={roadAddress}
+        apartData={data.result.defectLocs}
+      />
     </main>
   );
 }

@@ -3,44 +3,57 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import MapSearch from "@/Img/Main/MapSearch.svg";
+import MapMarker from "@/Img/Main/MapMarker.svg";
+import useAxios from "@/hooks/useAxios";
 
-const Map = (): JSX.Element => {
+interface apartDataTypes {
+  id: string;
+  x: number;
+  y: number;
+}
+
+interface MapProps {
+  x: string;
+  y: string;
+  roadAddress: string;
+  apartData: apartDataTypes[];
+}
+
+const Map = (props: MapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [mapLoading, setMapLoading] = useState<boolean>(false);
+  const instance = useAxios();
 
+  console.log(MapSearch);
   const getSuccess = (position: GeolocationPosition) => {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
+    const lat = props.x ? Number(props.x) : position.coords.latitude;
+    const lng = props.y ? Number(props.y) : position.coords.longitude;
     const { naver } = window;
-    // if (naver) setMapLoading(true);
+    if (naver) setMapLoading(true);
     if (mapRef.current && naver) {
       const location = new naver.maps.LatLng(lat, lng);
-      const location2 = new naver.maps.LatLng(lat + 1, lng + 1);
       const map = new naver.maps.Map(mapRef.current, {
         center: location,
         zoom: 15,
       });
-      new naver.maps.Marker({
-        position: location,
-        map,
-        icon: {
-          url: "Img/Main/MapMarker.png",
-          size: new naver.maps.Size(45, 50),
-          scaledSize: new naver.maps.Size(45, 50),
-          origin: new naver.maps.Point(0, 0),
-          anchor: new naver.maps.Point(12, 34),
-        },
-      });
-      new naver.maps.Marker({
-        position: location2,
-        map,
-        icon: {
-          url: "Img/Main/MapMarker.png",
-          size: new naver.maps.Size(45, 50),
-          scaledSize: new naver.maps.Size(45, 50),
-          origin: new naver.maps.Point(0, 0),
-          anchor: new naver.maps.Point(12, 34),
-        },
+
+      props.apartData.map((apart) => {
+        const location = new naver.maps.LatLng(apart.y, apart.x);
+        const marker = new naver.maps.Marker({
+          position: location,
+          map,
+          icon: {
+            url: MapMarker.src,
+            size: new naver.maps.Size(45, 50),
+            scaledSize: new naver.maps.Size(45, 50),
+            origin: new naver.maps.Point(0, 0),
+            anchor: new naver.maps.Point(12, 34),
+          },
+        });
+        naver.maps.Event.addListener(marker, "click", async function () {
+          const response = await instance.get(`/main/detail?id=${apart.id}`);
+          console.log(response);
+        });
       });
     }
   };
@@ -50,7 +63,7 @@ const Map = (): JSX.Element => {
   };
 
   useEffect(() => {
-    // navigator.geolocation.getCurrentPosition(getSuccess, getError);
+    navigator.geolocation.getCurrentPosition(getSuccess, getError);
   }, [mapLoading]);
 
   return (
@@ -64,7 +77,7 @@ const Map = (): JSX.Element => {
               className="mr-3.5"
             />
             <span className="text-white font-[Pretendard-SemiBold] text-xl">
-              동대문구 용산동
+              {props.roadAddress}
             </span>
           </section>
           <section className="w-full h-full" id="map" ref={mapRef} />
