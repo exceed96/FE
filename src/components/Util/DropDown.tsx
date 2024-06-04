@@ -25,8 +25,8 @@ const DropDown = (props: DropDownProps): JSX.Element => {
   return (
     <article
       className={`absolute ${
-        props.visibility && "border-[1px] border-black"
-      } flex self-end overflow-hidden`}
+        props.visibility && "border-[1px] border-[#E6E6E6]"
+      } flex self-end overflow-hidden z-100 bg-white`}
       onClick={(e) => props.setDropdownVisibility(!props.visibility)}
     >
       {visibilityAnimation && props.children}

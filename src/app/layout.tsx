@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Header from "@/components/Header/Header";
 import "./globals.css";
 import Script from "next/script";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import QueryProviders from "@/components/Util/QueryProviders";
+import ModalContainer from "@/components/Util/ModalContainer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="p-20 h-screen">
+      <body className="xl:p-20 h-screen flex flex-col">
         <Script
           strategy="beforeInteractive"
           src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_MAP_KEY}`}
@@ -30,6 +30,8 @@ export default function RootLayout({
           <Header />
           {children}
         </QueryProviders>
+        <div id="modalContent" />
+        <ModalContainer />
       </body>
     </html>
   );

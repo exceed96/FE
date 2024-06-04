@@ -5,7 +5,10 @@ import Image from "next/image";
 import MapSearch from "@/Img/Main/MapSearch.svg";
 import MapMarker from "@/Img/Main/MapMarker.svg";
 import useAxios from "@/hooks/useAxios";
+import { useModalState } from "@/store/Modal";
+import { useApartState } from "@/store/Apart";
 
+// types폴더에 따로 빼야 한다.
 interface apartDataTypes {
   id: string;
   x: number;
@@ -18,13 +21,15 @@ interface MapProps {
   roadAddress: string;
   apartData: apartDataTypes[];
 }
+// types폴더에 따로 빼야 한다.
 
 const Map = (props: MapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [mapLoading, setMapLoading] = useState<boolean>(false);
   const instance = useAxios();
+  const { setModalName } = useModalState();
+  const { setData } = useApartState();
 
-  console.log(MapSearch);
   const getSuccess = (position: GeolocationPosition) => {
     const lat = props.x ? Number(props.x) : position.coords.latitude;
     const lng = props.y ? Number(props.y) : position.coords.longitude;
@@ -53,6 +58,10 @@ const Map = (props: MapProps): JSX.Element => {
         naver.maps.Event.addListener(marker, "click", async function () {
           const response = await instance.get(`/main/detail?id=${apart.id}`);
           console.log(response);
+          if (response.status === 200) {
+            setModalName("apart");
+            setData(response.data.result);
+          }
         });
       });
     }
@@ -64,19 +73,19 @@ const Map = (props: MapProps): JSX.Element => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
-  }, [mapLoading]);
+  }, [mapLoading, props.x, props.y]);
 
   return (
-    <section className="relative md:w-3/4 w-full border-[#CED5E1] border-[1px]">
+    <section className="relative xl:w-3/4 w-full h-full xl:border-[#CED5E1] xl:border-[1px]">
       {mapLoading ? (
         <>
-          <section className="absolute top-0 left-0 bg-[#6E7CA2] flex z-10 px-4 py-2.5">
+          <section className="absolute right-0 xl:right-auto top-0 xl:left-0 bg-[#6E7CA2] flex z-10 px-4 py-2.5">
             <Image
               src={MapSearch}
               alt="search region icon"
               className="mr-3.5"
             />
-            <span className="text-white font-[Pretendard-SemiBold] text-xl">
+            <span className="text-white font-[Pretendard-SemiBold] xxs:text-xs xs:text-base sm:text-lg md:text-xl">
               {props.roadAddress}
             </span>
           </section>

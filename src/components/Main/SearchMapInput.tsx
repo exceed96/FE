@@ -12,7 +12,7 @@ const SearchMapInput = (props: SearchMapInputProps): JSX.Element => {
 
   return (
     <form
-      className="relative flex items-center h-1/10"
+      className="relative flex items-center xl:h-1/10"
       onSubmit={props.searchAreaApiHandler}
     >
       <input
@@ -22,6 +22,7 @@ const SearchMapInput = (props: SearchMapInputProps): JSX.Element => {
           setSearchArea(e.target.value);
         }}
         ref={props.searchAreaInputRef}
+        placeholder="궁금한 지역, 아파트를 검색해보세요."
       />
       <Image
         src={SearchIcon}

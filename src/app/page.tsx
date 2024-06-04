@@ -36,7 +36,6 @@ export default function Home() {
             return alert("Something wrong!");
           }
           const result = response.v2; // 검색 결과의 컨테이너
-          console.log(result);
           if (searchAreaInputRef.current.value)
             searchAreaInputRef.current.value = "";
           if (!result.addresses.length) {
@@ -52,13 +51,13 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col md:flex-row mt-16 h-[calc(100%-80px)]">
-      <section className="w-full md:w-1/4 mr-8 flex flex-col">
+    <main className="flex flex-col xl:flex-row xl:mt-16 h-[calc(100%-80px)] border-t-[1px] border-[#CDD0E2] xl:border-none">
+      <section className="w-full flex flex-col xl:w-1/4 xl:mr-8">
         <SearchMapInput
           searchAreaInputRef={searchAreaInputRef}
           searchAreaApiHandler={searchAreaApiHandler}
         />
-        <section className="bg-[#F9FBFE] mt-3 h-9/10 flex flex-col justify-between">
+        <section className="bg-[#F9FBFE] xl:mt-3 xl:h-9/10 flex flex-col justify-between">
           {/* <section>
             <section className="flex flex-col text-white px-6 py-8 bg-[#425EF0]">
               <strong className="mb-2 text-2xl font-[Pretendard-Bold]">

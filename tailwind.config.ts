@@ -8,9 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        xxs: "320px",
+        xs: "381px",
+      },
       height: {
         "1/10": "5%",
         "9/10": "95%",
+      },
+      width: {
+        "3/10": "30%",
+        "7/10": "70%",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
