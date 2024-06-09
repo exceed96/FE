@@ -30,6 +30,7 @@ const Map = (props: MapProps): JSX.Element => {
   const { setModalName } = useModalState();
   const { setData } = useApartState();
 
+  // 함수 따로 빼기
   const getSuccess = (position: GeolocationPosition) => {
     const lat = props.x ? Number(props.x) : position.coords.latitude;
     const lng = props.y ? Number(props.y) : position.coords.longitude;

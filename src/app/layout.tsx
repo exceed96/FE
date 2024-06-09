@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="xl:p-20 h-screen flex flex-col">
+      <body className="xl:px-10 xl:py-5 flex flex-col h-screen">
         <Script
           strategy="beforeInteractive"
           src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_MAP_KEY}`}

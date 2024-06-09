@@ -15,7 +15,7 @@ const ModalContent = (): JSX.Element => {
   return (
     <>
       {modalName && (
-        <section className="absolute bottom-0 w-full h-1/2 bg-[#F9FBFE] z-20">
+        <section className="absolute bottom-0 w-full h-1/2 bg-[#F9FBFE] z-100">
           {modalName ? modalContent[modalName] : null}
         </section>
       )}
@@ -25,7 +25,6 @@ const ModalContent = (): JSX.Element => {
 
 const ModalContainer = () => {
   const [isMount, setIsMount] = useState(false);
-
   useEffect(() => {
     setIsMount(true);
   }, []);

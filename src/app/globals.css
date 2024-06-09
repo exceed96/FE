@@ -32,3 +32,28 @@ body {
     text-wrap: balance;
   }
 }
+
+.pagination {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-bottom: 16px;
+  > * {
+    cursor: pointer;
+  }
+}
+
+.pagination__link {
+  transition: all 0.25s;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.3rem;
+  font-family: "Pretendard-Medium";
+  color: grey;
+}
+
+.pagination__link__active {
+  font-family: "Pretendard-Black";
+  color: #303948;
+}

@@ -1,43 +1,56 @@
 import Image from "next/image";
-import NewsImage from "@/Img/News/newsImage.svg";
+import Link from "next/link";
+import parse from "html-react-parser";
 
-const NewsList = (): JSX.Element => {
+type TNewsListType = {
+  image?: string | null;
+  title: string;
+  content: string;
+  url: string;
+  platform: string;
+  createAt: string;
+};
+
+type TNewsListProps = {
+  data: TNewsListType;
+};
+
+const NewsList = ({ data }: TNewsListProps): JSX.Element => {
+  const { image, title, content, url, platform, createAt } = data;
+
   return (
-    <li className="bg-white border-[1px] border-[#CBD1F3] border-solid px-4 py-4 lg:py-6 lg:px-12 flex mb-5 cursor-pointer">
-      <section>
-        <section className="flex flex-col mb-2">
-          <section className="font-[Pretendard-Medium] text-[#90949C]">
-            <span className="mr-5 font-[Pretendard-Medium] text-sm lg:text-base">
-              연합뉴스
-            </span>
-            <span className="font-[Pretendard-Medium] text-sm lg:text-base">
-              2023.08.30
+    <li className="bg-white border-[1px] border-[#CBD1F3] border-solid  px-4 xl:py-3 lg:px-12 flex cursor-pointer min-h-20 xxs:min-h-24 xs:min-h-28 sm:min-h-32 md:min-h-36 lg:min-h-40 xl:min-h-44 max-h-28 xxs:max-h-32 xs:max-h-36 sm:max-h-40 md:max-h-44 lg:max-h-48 xl:max-h-52">
+      <Link href={url} target="_blank">
+        <section className="flex flex-col justify-around h-full">
+          <section className="flex flex-col">
+            <section className="font-[Pretendard-Medium] text-[#90949C]">
+              <span className="mr-5 font-[Pretendard-Medium] text-[10px] sm:text-sm lg:text-base">
+                {platform}
+              </span>
+              <span className="font-[Pretendard-Medium] text-[10px] sm:text-sm lg:text-base">
+                {createAt}
+              </span>
+            </section>
+            <span className="font-[Pretendard-SemiBold] line-clamp-1 text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl text-[#303948] mt-1">
+              {parse(title)}
             </span>
           </section>
-          <span className="font-[Pretendard-SemiBold] text-base text-[#303948] mt-1">
-            'LH부실공사' 감리업체, 안전평가서도 문제점 수두룩
-          </span>
+          <section className="flex md:mt-5">
+            {/* {image && (
+              <Image
+                src={image}
+                alt={"news image"}
+                className="mr-10"
+                width={100} // 적절한 너비와 높이 값 설정
+                height={100}
+              />
+            )} */}
+            <p className="text-[#505B6E] text-[12px] sm:text-sm md:text-base lg:text-lg xl:text-xl w-full line-clamp-2 xs:line-clamp-3">
+              {parse(content)}
+            </p>
+          </section>
         </section>
-        <section className="flex md:mt-5">
-          <Image
-            src={NewsImage}
-            alt={"news image"}
-            className="mr-10 md:max-w-[186px] max-h-[82px]"
-          />
-          <p className="text-[#505B6E] line-clamp-3 text-sm lg:text-lg w-full">
-            LH 부실공사로 지적된 단지의 감리업체들이 안전관리 평가에서도 다수의
-            문제점이 발견된 것으로 나타났다. 인센티브는 있지만 규제사항은 없는
-            공공건설 공사업체 평가제도를 손봐야 한다는 지적이 나온다. 30일 국회
-            국토교통위원회 소속 국민의힘 유경준 의원이 국토안전관리원로부터 제출
-            받은 2022년 안전관리 수준평가 세부평가표를 분석한 결과 LH 부실공사로
-            지적된 단지의 감리업체들이 국토부 '안전관리 수준평가' 에서도 다수의
-            문제점이 발견됐다. LH 부실공사로 지적된 단지의 감리업체들이 안전관리
-            평가에서도 다수의 문제점이 발견된 것으로 나타났다. 인센티브는 있지만
-            규제사항은 없는 공공건설 공사업체 평가제도를 손봐야 한다는 지적이
-            나온다.
-          </p>
-        </section>
-      </section>
+      </Link>
     </li>
   );
 };
