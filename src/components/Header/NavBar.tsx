@@ -18,7 +18,7 @@ const NavBar = () => {
         </li>
         <li className={navListStyle} onClick={() => setModalName(null)}>
           <Link
-            href="/news"
+            href="/news?page=1&sort=desc"
             className={`${pathName === "/news" && "text-[#4764FF]"}`}
           >
             뉴스

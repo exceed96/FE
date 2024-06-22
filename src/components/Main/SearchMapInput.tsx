@@ -1,19 +1,21 @@
+"use client";
+
 import { RefObject, useState } from "react";
 import Image from "next/image";
 import SearchIcon from "@/Img/Main/Search.svg";
 
-interface SearchMapInputProps {
-  searchAreaInputRef: RefObject<HTMLInputElement>;
-  searchAreaApiHandler: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+// interface SearchMapInputProps {
+//   searchAreaInputRef: RefObject<HTMLInputElement>;
+//   searchAreaApiHandler: (e: React.FormEvent<HTMLFormElement>) => void;
+// }
 
-const SearchMapInput = (props: SearchMapInputProps): JSX.Element => {
+const SearchMapInput = (): JSX.Element => {
   const [searhArea, setSearchArea] = useState<string>("");
 
   return (
     <form
       className="relative flex items-center xl:h-1/10"
-      onSubmit={props.searchAreaApiHandler}
+      // onSubmit={props.searchAreaApiHandler}
     >
       <input
         type="text"
@@ -21,7 +23,7 @@ const SearchMapInput = (props: SearchMapInputProps): JSX.Element => {
         onChange={(e) => {
           setSearchArea(e.target.value);
         }}
-        ref={props.searchAreaInputRef}
+        // ref={props.searchAreaInputRef}
         placeholder="궁금한 지역, 아파트를 검색해보세요."
       />
       <Image

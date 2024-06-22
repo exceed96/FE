@@ -2,6 +2,7 @@ import closeModal from "@/Img/Modal/closeModal.svg";
 import Image from "next/image";
 import { useModalState } from "@/store/Modal";
 import { TAPartDataType } from "@/types/ApartDataType";
+import { useApartState } from "@/store/Apart";
 
 type TMApartHeader = {
   data: TAPartDataType;
@@ -9,6 +10,7 @@ type TMApartHeader = {
 
 const MApartHeader = (props: TMApartHeader) => {
   const { setModalName } = useModalState();
+  const { setData } = useApartState();
 
   return (
     <div className="text-white bg-[#4252f0] px-5 py-5 flex justify-between w-full">
@@ -21,7 +23,10 @@ const MApartHeader = (props: TMApartHeader) => {
         src={closeModal}
         alt={"close modal icon"}
         className="self-start"
-        onClick={() => setModalName(null)}
+        onClick={() => {
+          setModalName(null);
+          setData(null);
+        }}
       />
     </div>
   );
