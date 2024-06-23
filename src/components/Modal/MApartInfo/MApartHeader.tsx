@@ -22,7 +22,7 @@ const MApartHeader = (props: TMApartHeader) => {
       <Image
         src={closeModal}
         alt={"close modal icon"}
-        className="self-start"
+        className="self-start cursor-pointer"
         onClick={() => {
           setModalName(null);
           setData(null);

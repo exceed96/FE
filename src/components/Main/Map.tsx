@@ -5,9 +5,8 @@ import Image from "next/image";
 import MapSearch from "@/Img/Main/MapSearch.svg";
 import MapMarker from "@/Img/Main/MapMarker.svg";
 import useAxios from "@/hooks/useAxios";
-import { useModalState } from "@/store/Modal";
 import { useApartState } from "@/store/Apart";
-import { useWidth } from "@/store/Width";
+import { useMapLocation } from "@/store/Map";
 
 // types폴더에 따로 빼야 한다.
 interface apartDataTypes {
@@ -17,9 +16,6 @@ interface apartDataTypes {
 }
 
 interface MapProps {
-  // x: string;
-  // y: string;
-  // roadAddress: string;
   apartData: apartDataTypes[];
 }
 // types폴더에 따로 빼야 한다.
@@ -28,14 +24,17 @@ const Map = (props: MapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [mapLoading, setMapLoading] = useState<boolean>(false);
   const instance = useAxios();
-  const { setModalName } = useModalState();
   const { setData } = useApartState();
-  const { width } = useWidth();
+  const { mapLocation } = useMapLocation();
 
   // 함수 따로 빼기
   const getSuccess = async (position: GeolocationPosition) => {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
+    const lat = mapLocation.searchAreaY
+      ? Number(mapLocation.searchAreaY)
+      : position.coords.latitude;
+    const lng = mapLocation.searchAreaX
+      ? Number(mapLocation.searchAreaX)
+      : position.coords.longitude;
     const { naver } = window;
     if (naver) setMapLoading(true);
     if (mapRef.current && naver) {
@@ -74,7 +73,7 @@ const Map = (props: MapProps): JSX.Element => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getSuccess, getError);
-  }, [mapLoading]);
+  }, [mapLoading, mapLocation.searchAreaX, mapLocation.searchAreaY]);
 
   return (
     <section className="relative xl:w-3/4 w-full h-full xl:border-[#CED5E1] xl:border-[1px]">
@@ -87,7 +86,7 @@ const Map = (props: MapProps): JSX.Element => {
               className="mr-3.5"
             />
             <span className="text-white font-[Pretendard-SemiBold] xxs:text-xs xs:text-base sm:text-lg md:text-xl">
-              {/* {props.roadAddress} */}
+              {mapLocation.roadAddress}
             </span>
           </section>
           <section className="w-full h-full" id="map" ref={mapRef} />

@@ -53,15 +53,15 @@ export default function Paginate(props: TPaginate) {
       >
         &lt;
       </Link>
-      <ul className="flex gap-10">
+      <ul className="flex gap-8 sm:gap-9 md:gap-10">
         {pages.map((page, index) => (
           <li key={index}>
             <Link
-              href={`http://192.168.0.9:3000/news?page=${page}&sort=desc`}
+              href={`http://localhost:3000/news?page=${page}&sort=desc`}
               className={`${
                 selectPage === page
-                  ? "text-[#303948] font-[Pretendard-Bold]"
-                  : "text-[#B1B5BA] font-[Pretendard-Medium]"
+                  ? "text-[#303948] font-[Pretendard-Bold] text-xs sm:text-sm md:text-base"
+                  : "text-[#B1B5BA] font-[Pretendard-Medium] text-xs sm:text-sm md:text-base"
               }`}
             >
               {page}
