@@ -1,3 +1,5 @@
+"use client";
+
 import { RefObject, useState } from "react";
 import Image from "next/image";
 import SearchIcon from "@/Img/Main/Search.svg";

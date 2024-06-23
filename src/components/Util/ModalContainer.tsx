@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useModalState } from "@/store/Modal";
 import MApartInfo from "../Modal/MApartInfo/MApartInfo";
+import { useApartState } from "@/store/Apart";
 
 const ModalContent = (): JSX.Element => {
   const { modalName } = useModalState();
+  const { data } = useApartState();
 
   const modalContent: { [key: string]: JSX.Element | null } = {
     apart: <MApartInfo />,
@@ -14,7 +16,7 @@ const ModalContent = (): JSX.Element => {
 
   return (
     <>
-      {modalName && (
+      {modalName && data && (
         <section className="absolute bottom-0 w-full h-1/2 bg-[#F9FBFE] z-100">
           {modalName ? modalContent[modalName] : null}
         </section>

@@ -1,30 +1,29 @@
 @font-face {
   font-family: "Pretendard-Medium";
-  src: url("./Pretendard//Pretendard-Medium.ttf");
+  src: url("./Pretendard/Pretendard-Medium.ttf");
 }
-
 @font-face {
-  font-family: "Pretendard-Regular.ttf";
+  font-family: "Pretendard-Regular";
   src: url("./Pretendard//Pretendard-Regular.ttf");
 }
 
 @font-face {
-  font-family: "Pretendard-Thin.ttf";
+  font-family: "Pretendard-Thin";
   src: url("./Pretendard//Pretendard-Thin.ttf");
 }
 
 @font-face {
-  font-family: "Pretendard-ExtraLight.ttf";
+  font-family: "Pretendard-ExtraLight";
   src: url("./Pretendard//Pretendard-ExtraLight.ttf");
 }
 
 @font-face {
-  font-family: "Pretendard-Bold.ttf";
+  font-family: "Pretendard-Bold";
   src: url("./Pretendard//Pretendard-Bold.ttf");
 }
 
 @font-face {
-  font-family: "Pretendard-SemiBold.ttf";
+  font-family: "Pretendard-SemiBold";
   src: url("./Pretendard//Pretendard-SemiBold.ttf");
 }
 
