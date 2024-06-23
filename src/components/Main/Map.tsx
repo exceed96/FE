@@ -7,6 +7,7 @@ import MapMarker from "@/Img/Main/MapMarker.svg";
 import useAxios from "@/hooks/useAxios";
 import { useApartState } from "@/store/Apart";
 import { useMapLocation } from "@/store/Map";
+import { useModalState } from "@/store/Modal";
 
 // types폴더에 따로 빼야 한다.
 interface apartDataTypes {
@@ -26,7 +27,7 @@ const Map = (props: MapProps): JSX.Element => {
   const instance = useAxios();
   const { setData } = useApartState();
   const { mapLocation } = useMapLocation();
-
+  const { setModalName } = useModalState();
   // 함수 따로 빼기
   const getSuccess = async (position: GeolocationPosition) => {
     const lat = mapLocation.searchAreaY
@@ -60,6 +61,7 @@ const Map = (props: MapProps): JSX.Element => {
         naver.maps.Event.addListener(marker, "click", async function () {
           const response = await instance.get(`/main/detail?id=${apart.id}`);
           if (response.status === 200) {
+            if (window.innerWidth < 1280) setModalName("apart");
             setData(response.data.result);
           }
         });
