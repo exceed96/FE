@@ -16,6 +16,7 @@ const ReportsPage = (): JSX.Element => {
         <Link
           href={REPORT_URL}
           className="bg-[#425EF0] text-white font-[Pretendard-Medium] text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl py-3 px-9"
+          target="_blank"
         >
           apartment0513@gamil.com
         </Link>

@@ -49,7 +49,7 @@ const DropDown = (): JSX.Element => {
       <article
         className={`absolute ${
           visibility && "border-[1px] border-[#E6E6E6] min-w-24"
-        } flex self-end overflow-hidden top-8 z-100 bg-white`}
+        } flex self-end overflow-hidden top-12 z-100 bg-white`}
         onClick={(e) => setVisibility(!visibility)}
       >
         {visibilityAnimation && (

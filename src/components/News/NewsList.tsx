@@ -54,7 +54,7 @@ const NewsList = ({ data }: TNewsListProps): JSX.Element => {
                 height={100}
               />
             )} */}
-            <p className="text-[#505B6E] text-[12px] sm:text-sm md:text-base lg:text-lg xl:text-xl w-full line-clamp-2 xs:line-clamp-3">
+            <p className="text-[#505B6E] text-[12px] sm:text-sm md:text-base lg:text-lg xl:text-xl w-full line-clamp-2 xs:line-clamp-3 xl:line-clamp-1">
               {parse(content)}
             </p>
           </section>
