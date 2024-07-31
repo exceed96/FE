@@ -46,7 +46,7 @@ export default function Paginate(props: TPaginate) {
   return (
     <section className="w-full flex justify-center items-center py-10">
       <Link
-        href={`http://localhost:3000/news?page=${selectPage - 1}&sort=desc`}
+        href={`/news?page=${selectPage - 1}&sort=desc`}
         className={`mr-8 ${
           selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
         }`}
@@ -57,7 +57,7 @@ export default function Paginate(props: TPaginate) {
         {pages.map((page, index) => (
           <li key={index}>
             <Link
-              href={`http://localhost:3000/news?page=${page}&sort=desc`}
+              href={`/news?page=${page}&sort=desc`}
               className={`${
                 selectPage === page
                   ? "text-[#303948] font-[Pretendard-Bold] text-xs sm:text-sm md:text-base"
@@ -75,7 +75,7 @@ export default function Paginate(props: TPaginate) {
             ? "pointer-events-none text-[#ccc]"
             : ""
         }`}
-        href={`http://localhost:3000/news?page=${selectPage + 1}&sort=desc`}
+        href={`/news?page=${selectPage + 1}&sort=desc`}
       >
         &gt;
       </Link>
