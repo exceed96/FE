@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import MapSearch from "@/Img/Main/MapSearch.svg";
 import MapMarker from "@/Img/Main/MapMarker.svg";
-import useAxios from "@/hooks/useAxios";
 import { useApartState } from "@/store/Apart";
 import { useMapLocation } from "@/store/Map";
 import { useModalState } from "@/store/Modal";
@@ -24,7 +23,6 @@ interface MapProps {
 const Map = (props: MapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [mapLoading, setMapLoading] = useState<boolean>(false);
-  const instance = useAxios();
   const { setData } = useApartState();
   const { mapLocation } = useMapLocation();
   const { setModalName } = useModalState();
@@ -59,10 +57,13 @@ const Map = (props: MapProps): JSX.Element => {
           },
         });
         naver.maps.Event.addListener(marker, "click", async function () {
-          const response = await instance.get(`/main/detail?id=${apart.id}`);
-          if (response.status === 200) {
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BASEURL}/main/detail?id=${apart.id}`
+          );
+          if (response.ok) {
             if (window.innerWidth < 1280) setModalName("apart");
-            setData(response.data.result);
+            const data = await response.json();
+            setData(data.result);
           }
         });
       });
