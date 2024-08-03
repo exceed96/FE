@@ -6,17 +6,16 @@ import Image from "next/image";
 import DropDownIcon from "@/Img/Util/DropDown.svg";
 import DropDownOutIcon from "@/Img/Util/DropDownOut.svg";
 import DropdownCheck from "@/Img/News/DropdownCheck.svg";
-// interface DropDownProps {
-//   visibility: boolean;
-//   setDropdownVisibility: React.Dispatch<React.SetStateAction<boolean>>;
-//   children: ReactNode;
-// }
+import { useDropDown } from "@/store/DropDown";
 
 const DropDown = (): JSX.Element => {
   const [visibilityAnimation, setVisibilityAnimation] =
     useState<boolean>(false);
   const [visibility, setVisibility] = useState(false);
-  const [dropdownState, setDropdownState] = useState("New");
+  const { dropDownState, setDropDownState } = useDropDown((state) => ({
+    dropDownState: state.dropDownState,
+    setDropDownState: state.setDropDownState,
+  }));
 
   const dropdownListStyle = "relative flex items-center ml-5 cursor-pointer";
 
@@ -39,7 +38,7 @@ const DropDown = (): JSX.Element => {
         }}
       >
         <span className="mr-2">
-          {dropdownState === "New" ? "최신순" : "오래된순"}
+          {dropDownState === "NEW" ? "최신순" : "오래된순"}
         </span>
         <Image
           src={visibility ? DropDownOutIcon : DropDownIcon}
@@ -63,10 +62,10 @@ const DropDown = (): JSX.Element => {
             <li
               className={dropdownListStyle}
               onClick={() => {
-                setDropdownState("New");
+                setDropDownState("NEW");
               }}
             >
-              {dropdownState === "New" && (
+              {dropDownState === "NEW" && (
                 <Image
                   src={DropdownCheck}
                   alt={"new"}
@@ -76,7 +75,7 @@ const DropDown = (): JSX.Element => {
               <Link
                 href={`https://weakapart.vercel.app/news?page=1&sort=desc`}
                 className={`ml-2 ${
-                  dropdownState === "New"
+                  dropDownState === "NEW"
                     ? "font-[Pretendard-SemiBold]"
                     : "font-[Pretendard-Medium]"
                 }`}
@@ -87,10 +86,10 @@ const DropDown = (): JSX.Element => {
             <li
               className={dropdownListStyle}
               onClick={() => {
-                setDropdownState("Old");
+                setDropDownState("OLD");
               }}
             >
-              {dropdownState === "Old" && (
+              {dropDownState === "OLD" && (
                 <Image
                   src={DropdownCheck}
                   alt={"old"}
@@ -100,7 +99,7 @@ const DropDown = (): JSX.Element => {
               <Link
                 href={`https://weakapart.vercel.app/news?page=1&sort=asc`}
                 className={`ml-2 ${
-                  dropdownState === "Old"
+                  dropDownState === "OLD"
                     ? "font-[Pretendard-SemiBold]"
                     : "font-[Pretendard-Medium]"
                 }`}
