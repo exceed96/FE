@@ -74,7 +74,7 @@ const DropDown = (): JSX.Element => {
                 />
               )}
               <Link
-                href={`http://localhost:3000/news?page=1&sort=desc`}
+                href={`https://weakapart.vercel.app/news?page=1&sort=desc`}
                 className={`ml-2 ${
                   dropdownState === "New"
                     ? "font-[Pretendard-SemiBold]"
@@ -98,7 +98,7 @@ const DropDown = (): JSX.Element => {
                 />
               )}
               <Link
-                href={`http://localhost:3000/news?page=1&sort=asc`}
+                href={`https://weakapart.vercel.app/news?page=1&sort=asc`}
                 className={`ml-2 ${
                   dropdownState === "Old"
                     ? "font-[Pretendard-SemiBold]"

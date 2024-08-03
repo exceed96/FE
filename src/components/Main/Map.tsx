@@ -8,7 +8,6 @@ import { useApartState } from "@/store/Apart";
 import { useMapLocation } from "@/store/Map";
 import { useModalState } from "@/store/Modal";
 
-// types폴더에 따로 빼야 한다.
 interface apartDataTypes {
   id: string;
   x: number;
@@ -18,7 +17,6 @@ interface apartDataTypes {
 interface MapProps {
   apartData: apartDataTypes[];
 }
-// types폴더에 따로 빼야 한다.
 
 const Map = (props: MapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);

@@ -99,7 +99,9 @@ function Detail() {
                   보강현황
                 </strong>
                 <span className="text-[#FE7A1A]">
-                  {data.splmnInfo.reinfContent}
+                  {data.splmnInfo.reinfContent === "1" && "진행 예정"}
+                  {data.splmnInfo.reinfContent === "2" && "진행 중"}
+                  {data.splmnInfo.reinfContent === "3" && "진행 완료"}
                 </span>
               </section>
               <section className="flex">

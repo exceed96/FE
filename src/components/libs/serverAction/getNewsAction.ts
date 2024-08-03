@@ -10,6 +10,7 @@ export async function getNewsAction(page: string, sort: string) {
     const result = await fetch(url, options);
     if (result.ok) {
       const data = await result.json();
+      console.log(data);
       return { data, status: result.status };
     }
   } catch (error) {
