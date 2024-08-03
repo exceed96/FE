@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { useDropDown } from "@/store/DropDown";
 import Link from "next/link";
 
 type TPaginate = {
@@ -11,6 +12,9 @@ type TPaginate = {
 export default function Paginate(props: TPaginate) {
   const searchParmas = useSearchParams();
   const selectPage = Number(searchParmas.get("page"));
+  const { dropDownState } = useDropDown((state) => ({
+    dropDownState: state.dropDownState,
+  }));
 
   const generatePages = (selectPage: number, totalCount: number) => {
     let pagesArray = [];
@@ -46,7 +50,9 @@ export default function Paginate(props: TPaginate) {
   return (
     <section className="w-full flex justify-center items-center py-10">
       <Link
-        href={`/news?page=${selectPage - 1}&sort=desc`}
+        href={`/news?page=${selectPage - 1}&sort=${
+          dropDownState === "NEW" ? "desc" : "asc"
+        }`}
         className={`mr-8 ${
           selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
         }`}
@@ -57,7 +63,9 @@ export default function Paginate(props: TPaginate) {
         {pages.map((page, index) => (
           <li key={index}>
             <Link
-              href={`/news?page=${page}&sort=desc`}
+              href={`/news?page=${page}&sort=${
+                dropDownState === "NEW" ? "desc" : "asc"
+              }`}
               className={`${
                 selectPage === page
                   ? "text-[#303948] font-[Pretendard-Bold] text-xs sm:text-sm md:text-base"
