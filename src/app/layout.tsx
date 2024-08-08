@@ -3,6 +3,7 @@ import Header from "@/components/Header/Header";
 import "./globals.css";
 import Script from "next/script";
 import ModalContainer from "@/components/Util/ModalContainer";
+import { Analytics } from "@vercel/analytics/react";
 
 export function generateMetadata(): Metadata {
   return {
@@ -31,6 +32,7 @@ export default function RootLayout({
         {children}
         <div id="modalContent" />
         <ModalContainer />
+        <Analytics />
       </body>
     </html>
   );
