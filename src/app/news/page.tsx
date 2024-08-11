@@ -2,12 +2,11 @@ import NewsList from "@/components/News/NewsList";
 import DropDown from "@/components/Util/DropDown";
 import Paginate from "@/components/Util/Paginate";
 import { getNewsAction } from "@/libs/serverAction/getNewsAction";
+import { notFound } from "next/navigation";
 
-export default async function Newspage({ searchParams }: any) {
-  const { data, status } = await getNewsAction(
-    searchParams.page,
-    searchParams.sort
-  );
+export default async function Newspage({ searchParams, params }: any) {
+  if (params.slug) notFound();
+  const { data } = await getNewsAction(searchParams.page, searchParams.sort);
 
   return (
     <section className="w-full h-full relative flex flex-col border-t-[1px] border-[#CDD0E2] xl:border-none px-5 md:px-10">

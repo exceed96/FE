@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const REPORT_URL = process.env.NEXT_PUBLIC_REPORTURL;
 
-const ReportsPage = (): JSX.Element => {
+const ReportsPage = ({ params }: any): JSX.Element => {
+  if (params.slug) notFound();
+
   return (
     <main className="xl:bg-[#F9FBFE] w-full h-full flex flex-col items-center justify-center border-t-[1px] border-[#CDD0E2] xl:border-none">
       <section className="flex flex-col items-center mb-24">

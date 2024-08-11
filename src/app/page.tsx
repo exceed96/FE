@@ -4,7 +4,7 @@ import DetailSearch from "@/components/Main/DetailSearch/DetailSearch";
 import { getApartAction } from "@/libs/serverAction/getApartAction";
 
 export default async function Home() {
-  const { data, status } = await getApartAction();
+  const { data } = await getApartAction();
 
   return (
     <main className="flex flex-col xl:flex-row xl:mt-16 h-[calc(100%-80px)] border-t-[1px] border-[#CDD0E2] xl:border-none">
