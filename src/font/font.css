@@ -1,39 +1,39 @@
 @font-face {
   font-family: "Pretendard-Medium";
-  src: url("./Pretendard//Pretendard-Medium.ttf");
+  src: url("./Pretendard//Pretendard-Medium.woff2");
 }
 
 @font-face {
-  font-family: "Pretendard-Regular.ttf";
-  src: url("./Pretendard//Pretendard-Regular.ttf");
+  font-family: "Pretendard-Regular";
+  src: url("./Pretendard//Pretendard-Regular.woff2");
 }
 
 @font-face {
-  font-family: "Pretendard-Thin.ttf";
-  src: url("./Pretendard//Pretendard-Thin.ttf");
+  font-family: "Pretendard-Thin";
+  src: url("./Pretendard//Pretendard-Thin.woff2");
 }
 
 @font-face {
-  font-family: "Pretendard-ExtraLight.ttf";
-  src: url("./Pretendard//Pretendard-ExtraLight.ttf");
+  font-family: "Pretendard-ExtraLight";
+  src: url("./Pretendard//Pretendard-ExtraLight.woff2");
 }
 
 @font-face {
-  font-family: "Pretendard-Bold.ttf";
-  src: url("./Pretendard//Pretendard-Bold.ttf");
+  font-family: "Pretendard-Bold";
+  src: url("./Pretendard//Pretendard-Bold.woff2");
 }
 
 @font-face {
-  font-family: "Pretendard-SemiBold.ttf";
-  src: url("./Pretendard//Pretendard-SemiBold.ttf");
+  font-family: "Pretendard-SemiBold";
+  src: url("./Pretendard//Pretendard-SemiBold.woff2");
 }
 
 @font-face {
-  font-family: "Pretendard-ExtraBold.ttf";
-  src: url("./Pretendard//Pretendard-ExtraBold.ttf");
+  font-family: "Pretendard-ExtraBold";
+  src: url("./Pretendard//Pretendard-ExtraBold.woff2");
 }
 
 @font-face {
-  font-family: "Pretendard-Black.ttf";
-  src: url("./Pretendard//Pretendard-Black.ttf");
+  font-family: "Pretendard-Black";
+  src: url("./Pretendard//Pretendard-Black.woff2");
 }
