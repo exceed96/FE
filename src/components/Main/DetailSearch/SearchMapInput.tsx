@@ -19,7 +19,7 @@ const SearchMapInput = (props: SearchMapInputProps): JSX.Element => {
     >
       <input
         type="text"
-        className="border-[1px] border-[#6C82F7] border-solid text-[#4764FF] py-2.5 px-4 w-full outline-none"
+        className="border-y-[1px] sm:border-[1px] border-[#6C82F7] border-solid text-[#4764FF] py-2.5 px-4 w-full outline-none"
         onChange={(e) => {
           setSearchArea(e.target.value);
         }}
