@@ -15,7 +15,11 @@ function WeakApart() {
   return (
     <>
       {data && !modalName ? (
-        <div className="bg-[#F9FBFE] xl:mt-3 xl:h-9/10 flex flex-col justify-between">
+        <div
+          className={`${
+            data ? "" : "bg-[#F9FBFE]"
+          } xl:mt-3 xl:h-9/10 flex flex-col justify-between`}
+        >
           <WeakApartHeader
             title={data.info.title}
             subTitle={data.info.subTitle}
