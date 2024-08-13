@@ -5,7 +5,7 @@ type TWeakApartBuildInfo = {
 
 export default function WeakApartBuildInfo(props: TWeakApartBuildInfo) {
   return (
-    <div className="flex flex-col text-white px-6 py-8 border-[1px] border-[#D6E5FF]">
+    <div className="flex flex-col text-white px-6 py-8 border-[1px] border-[#D6E5FF] bg-[#F9FBFE]">
       <strong className="text-[#4764FF] text-xl">기둥 설치 현황</strong>
       <div className="mt-6 text-lg">
         <div className="mb-3 flex">
