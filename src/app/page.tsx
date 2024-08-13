@@ -1,7 +1,7 @@
 import Map from "@/components/Main/Map";
 import WidthObv from "@/components/Util/WidthObv";
 import MapSearch from "@/components/Main/MapSearch/MapSearch";
-import { getApartAction } from "@/libs/serverAction/getApartAction";
+import { getApartAction } from "@/libs/ServerAction/getApartAction";
 
 export default async function Home() {
   const { data } = await getApartAction();
