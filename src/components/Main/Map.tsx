@@ -48,7 +48,7 @@ const Map = (props: TMapProps): JSX.Element => {
       const location = new naver.maps.LatLng(lat, lng);
       const map = new naver.maps.Map(mapRef.current, {
         center: location,
-        zoom: 7,
+        zoom: mapLocation.searchAreaX ? 15 : 7,
       });
       props.apartData.map((apart) => {
         const location = new naver.maps.LatLng(apart.y, apart.x);
