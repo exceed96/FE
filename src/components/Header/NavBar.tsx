@@ -5,6 +5,7 @@ import { useModalState } from "@/store/Modal";
 const NavBar = () => {
   const navListStyle =
     "font-[Pretendard-SemiBold] text-[#505B6E] mr-8 xl:px-10 xxs:text-base xs:text-lg sm:text-xl md:text-2xl cursor-pointer";
+
   const pathName = usePathname();
   const { setModalName } = useModalState();
 

@@ -1,11 +1,11 @@
 "use client";
 
-import SearchMapInput from "./SearchMapInput";
-import Detail from "./Detail";
+import MapSearchInput from "./SearchMapInput";
+import WeakApart from "../WeakApart/WeakApart";
 import { useRef } from "react";
 import { useMapLocation } from "@/store/Map";
 
-export default function DetailSearch() {
+export default function MapSearch() {
   const searchAreaInputRef = useRef(null);
   const { mapLocation } = useMapLocation();
 
@@ -18,9 +18,9 @@ export default function DetailSearch() {
         },
         function (status, response) {
           if (status !== naver.maps.Service.Status.OK) {
-            return alert("Something wrong!");
+            return alert("지도 검색 에러 발생!");
           }
-          const result = response.v2; // 검색 결과의 컨테이너
+          const result = response.v2;
           if (searchAreaInputRef.current.value)
             searchAreaInputRef.current.value = "";
           if (!result.addresses.length) {
@@ -37,11 +37,11 @@ export default function DetailSearch() {
 
   return (
     <section className="w-full flex flex-col justify-start xl:w-1/4 xl:mr-8">
-      <SearchMapInput
+      <MapSearchInput
         searchAreaInputRef={searchAreaInputRef}
         searchAreaApiHandler={searchAreaApiHandler}
       />
-      <Detail />
+      <WeakApart />
     </section>
   );
 }

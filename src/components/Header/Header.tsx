@@ -1,4 +1,5 @@
 "use client";
+
 import NavBar from "./NavBar";
 
 const Header = (): JSX.Element => {

@@ -7,18 +7,19 @@ import MapMarker from "@/Img/Main/MapMarker.svg";
 import { useApartState } from "@/store/Apart";
 import { useMapLocation } from "@/store/Map";
 import { useModalState } from "@/store/Modal";
+import MapLoading from "../Util/MapLoading";
 
-interface apartDataTypes {
+type TApartDataTypes = {
   id: string;
   x: number;
   y: number;
-}
+};
 
-interface MapProps {
-  apartData: apartDataTypes[];
-}
+type TMapProps = {
+  apartData: TApartDataTypes[];
+};
 
-const Map = (props: MapProps): JSX.Element => {
+const Map = (props: TMapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [mapLoading, setMapLoading] = useState<boolean>(false);
   const { setData } = useApartState();
@@ -93,14 +94,7 @@ const Map = (props: MapProps): JSX.Element => {
           <section className="w-full h-full" id="map" ref={mapRef} />
         </>
       ) : (
-        <section className="w-full bg-[#F0F5FE] h-full flex flex-col justify-center items-center text-[#535B83]">
-          <span className="text-lg">지도를 불러오는 중입니다</span>
-          <div className="flex items-center mt-5">
-            <div className="h-3 w-3 rounded-full mr-2 animate-[changeColor_1.5s_infinite]"></div>
-            <div className="h-3 w-3 rounded-full mx-2 animate-[changeColor_1.5s_infinite_300ms]"></div>
-            <div className="h-3 w-3 rounded-full ml-2 animate-[changeColor_1.5s_infinite_600ms]"></div>
-          </div>
-        </section>
+        <MapLoading />
       )}
     </section>
   );
