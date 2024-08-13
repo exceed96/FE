@@ -1,7 +1,7 @@
 import NewsList from "@/components/News/NewsList";
 import DropDown from "@/components/Util/DropDown";
 import Paginate from "@/components/Util/Paginate";
-import { getNewsAction } from "@/libs/serverAction/getNewsAction";
+import { getNewsAction } from "@/libs/ServerAction/getNewsAction";
 import { notFound } from "next/navigation";
 
 export default async function Newspage({ searchParams, params }: any) {
