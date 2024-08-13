@@ -14,8 +14,8 @@ function WeakApart() {
 
   return (
     <>
-      {data && !modalName && (
-        <section className="bg-[#F9FBFE] xl:mt-3 xl:h-9/10 flex flex-col justify-between">
+      {data && !modalName ? (
+        <div className="bg-[#F9FBFE] xl:mt-3 xl:h-9/10 flex flex-col justify-between">
           <WeakApartHeader
             title={data.info.title}
             subTitle={data.info.subTitle}
@@ -34,7 +34,9 @@ function WeakApart() {
             reinfStatus={data.splmnInfo.reinfStatus}
             reinfContent={data.splmnInfo.reinfContent}
           />
-        </section>
+        </div>
+      ) : (
+        <div className="bg-[#F9FBFE] xl:h-9/10"></div>
       )}
     </>
   );
