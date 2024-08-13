@@ -22,26 +22,34 @@ type TMapProps = {
 const Map = (props: TMapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [mapLoading, setMapLoading] = useState<boolean>(false);
-  const { setData } = useApartState();
-  const { mapLocation } = useMapLocation();
-  const { setModalName } = useModalState();
+  const { setData } = useApartState((state) => ({
+    setData: state.setData,
+  }));
+
+  const { mapLocation } = useMapLocation((state) => ({
+    mapLocation: state.mapLocation,
+  }));
+
+  const { setModalName } = useModalState((state) => ({
+    setModalName: state.setModalName,
+  }));
+
   // 함수 따로 빼기
   const getSuccess = async (position: GeolocationPosition) => {
     const lat = mapLocation.searchAreaY
       ? Number(mapLocation.searchAreaY)
-      : position.coords.latitude;
+      : 36.34;
     const lng = mapLocation.searchAreaX
       ? Number(mapLocation.searchAreaX)
-      : position.coords.longitude;
+      : 127.77;
     const { naver } = window;
     if (naver) setMapLoading(true);
     if (mapRef.current && naver) {
       const location = new naver.maps.LatLng(lat, lng);
       const map = new naver.maps.Map(mapRef.current, {
         center: location,
-        zoom: 15,
+        zoom: 7,
       });
-
       props.apartData.map((apart) => {
         const location = new naver.maps.LatLng(apart.y, apart.x);
         const marker = new naver.maps.Marker({
@@ -62,6 +70,7 @@ const Map = (props: TMapProps): JSX.Element => {
           if (response.ok) {
             if (window.innerWidth < 1280) setModalName("apart");
             const data = await response.json();
+            mapLocation.setRoadAddress(data.result.info.address);
             setData(data.result);
           }
         });

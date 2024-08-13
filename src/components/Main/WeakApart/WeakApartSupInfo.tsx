@@ -16,12 +16,6 @@ export default function WeakApartSupInfo(props: TWeakApartSubInfoProps) {
         </div>
         <div className="mb-3 flex">
           <strong className="text-[#0F0E0E] font-[Pretendard-SemiBold] mr-4">
-            공법
-          </strong>
-          <span className="text-[#393D45]">{props.reinfStatus}</span>
-        </div>
-        <div className="mb-3 flex">
-          <strong className="text-[#0F0E0E] font-[Pretendard-SemiBold] mr-4">
             보강현황
           </strong>
           <span className="text-[#FE7A1A]">

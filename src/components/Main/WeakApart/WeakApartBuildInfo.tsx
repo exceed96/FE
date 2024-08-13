@@ -20,18 +20,6 @@ export default function WeakApartBuildInfo(props: TWeakApartBuildInfo) {
           </strong>
           <span className="text-[#393D45]">{props.defctRsn}</span>
         </div>
-        {/* <div className="mb-3 flex">
-          <strong className="text-[#0F0E0E] font-[Pretendard-SemiBold] mr-4">
-            미흡개소
-          </strong>
-          <span className="text-[#393D45]">12</span>
-        </div>
-        <div className="flex">
-          <strong className="text-[#0F0E0E] font-[Pretendard-SemiBold] mr-4">
-            콘크리트 강도
-          </strong>
-          <span className="text-[#393D45]">25</span>
-        </div> */}
       </div>
     </div>
   );
