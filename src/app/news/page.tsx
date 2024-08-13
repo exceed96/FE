@@ -1,8 +1,8 @@
 import NewsList from "@/components/News/NewsList";
 import DropDown from "@/components/Util/DropDown";
 import Paginate from "@/components/Util/Paginate";
-import { getNewsAction } from "@/libs/ServerAction/getNewsAction";
 import { notFound } from "next/navigation";
+import { getNewsAction } from "@/libs/ServerAction/getNewsAction";
 
 export default async function Newspage({ searchParams, params }: any) {
   if (params.slug) notFound();
