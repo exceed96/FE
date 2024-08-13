@@ -4,12 +4,12 @@ import { RefObject, useState } from "react";
 import Image from "next/image";
 import SearchIcon from "@/Img/Main/Search.svg";
 
-interface SearchMapInputProps {
+type TSearchMapInputProps = {
   searchAreaInputRef: RefObject<HTMLInputElement>;
   searchAreaApiHandler: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+};
 
-const SearchMapInput = (props: SearchMapInputProps): JSX.Element => {
+const MapSearchInput = (props: TSearchMapInputProps): JSX.Element => {
   const [searhArea, setSearchArea] = useState<string>("");
 
   return (
@@ -35,4 +35,4 @@ const SearchMapInput = (props: SearchMapInputProps): JSX.Element => {
   );
 };
 
-export default SearchMapInput;
+export default MapSearchInput;

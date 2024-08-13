@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header/Header";
 import "./globals.css";
 import Script from "next/script";
-import ModalContainer from "@/components/Util/ModalContainer";
+import ModalContainer from "@/components/Container/ModalContainer";
 import { Analytics } from "@vercel/analytics/react";
 
 export function generateMetadata(): Metadata {
