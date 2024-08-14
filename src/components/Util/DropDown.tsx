@@ -73,7 +73,11 @@ const DropDown = (): JSX.Element => {
                 />
               )}
               <Link
-                href={`https://weakapart.vercel.app/news?page=1&sort=desc`}
+                href={`${
+                  process.env.NODE_ENV === "development"
+                    ? process.env.NEXT_PUBLIC_LOCALURL
+                    : process.env.NEXT_PUBLIC_DEPLOYURL
+                }/news?page=1&sort=desc`}
                 className={`ml-2 ${
                   dropDownState === "NEW"
                     ? "font-[Pretendard-SemiBold]"
@@ -97,7 +101,11 @@ const DropDown = (): JSX.Element => {
                 />
               )}
               <Link
-                href={`https://weakapart.vercel.app/news?page=1&sort=asc`}
+                href={`${
+                  process.env.NODE_ENV === "development"
+                    ? process.env.NEXT_PUBLIC_LOCALURL
+                    : process.env.NEXT_PUBLIC_DEPLOYURL
+                }/news?page=1&sort=asc`}
                 className={`ml-2 ${
                   dropDownState === "OLD"
                     ? "font-[Pretendard-SemiBold]"
