@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 export function generateMetadata(): Metadata {
   return {
     title: "전국 부실아파트 조회",
-    description: "전국 부실아파트를 조회할 수 있는 홈페이지 입니다.",
+    description: "전국 부실아파트를 조회할 수 있는 서비스 입니다.",
     icons: {
       icon: "./favicon.ico",
     },
