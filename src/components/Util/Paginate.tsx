@@ -50,6 +50,16 @@ export default function Paginate(props: TPaginate) {
   return (
     <section className="w-full flex justify-center items-center py-10">
       <Link
+        href={`/news?page=${selectPage < 6 ? "1" : selectPage - 5}&sort=${
+          dropDownState === "NEW" ? "desc" : "asc"
+        }`}
+        className={`mr-8 ${
+          selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
+        }`}
+      >
+        &lt;&lt;
+      </Link>
+      <Link
         href={`/news?page=${selectPage - 1}&sort=${
           dropDownState === "NEW" ? "desc" : "asc"
         }`}
@@ -86,6 +96,18 @@ export default function Paginate(props: TPaginate) {
         href={`/news?page=${selectPage + 1}&sort=desc`}
       >
         &gt;
+      </Link>
+      <Link
+        className={`ml-8 ${
+          selectPage === props.totalCount
+            ? "pointer-events-none text-[#ccc]"
+            : ""
+        }`}
+        href={`/news?page=${
+          selectPage > props.totalCount - 5 ? props.totalCount : selectPage + 5
+        }&sort=desc`}
+      >
+        &gt;&gt;
       </Link>
     </section>
   );
