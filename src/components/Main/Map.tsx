@@ -63,17 +63,17 @@ const Map = (props: TMapProps): JSX.Element => {
             anchor: new naver.maps.Point(12, 34),
           },
         });
-        // naver.maps.Event.addListener(marker, "click", async function () {
-        //   const response = await fetch(
-        //     `${process.env.NEXT_PUBLIC_BASEURL}/main/detail?id=${apart.id}`
-        //   );
-        //   if (response.ok) {
-        //     if (window.innerWidth < 1280) setModalName("apart");
-        //     const data = await response.json();
-        //     mapLocation.setRoadAddress(data.result.info.address);
-        //     setData(data.result);
-        //   }
-        // });
+        naver.maps.Event.addListener(marker, "click", async function () {
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BASEURL}/main/detail?id=${apart.id}`
+          );
+          if (response.ok) {
+            if (window.innerWidth < 1280) setModalName("apart");
+            const data = await response.json();
+            mapLocation.setRoadAddress(data.result.info.address);
+            setData(data.result);
+          }
+        });
       });
     }
   };
