@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       screens: {
         xxs: "320px",
-        xs: "381px",
+        xs: "375px",
       },
       height: {
         "1/10": "5%",

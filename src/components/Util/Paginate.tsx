@@ -53,7 +53,7 @@ export default function Paginate(props: TPaginate) {
         href={`/news?page=${selectPage < 6 ? "1" : selectPage - 5}&sort=${
           dropDownState === "NEW" ? "desc" : "asc"
         }`}
-        className={`mr-8 ${
+        className={`mr-1 xxs:mr-2 xs:mr-4 xxs:text-[10px] xs:text-sm text-base ${
           selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
         }`}
       >
@@ -63,13 +63,13 @@ export default function Paginate(props: TPaginate) {
         href={`/news?page=${selectPage - 1}&sort=${
           dropDownState === "NEW" ? "desc" : "asc"
         }`}
-        className={`mr-8 ${
+        className={`mr-1 xxs:mr-2 xs:mr-4 xxs:text-[10px] xs:text-sm text-base ${
           selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
         }`}
       >
         &lt;
       </Link>
-      <ul className="flex gap-8 sm:gap-9 md:gap-10">
+      <ul className="flex gap-4 xxs:gap-6 xs:gap-8 md:gap-10">
         {pages.map((page, index) => (
           <li key={index}>
             <Link
@@ -78,8 +78,8 @@ export default function Paginate(props: TPaginate) {
               }`}
               className={`${
                 selectPage === page
-                  ? "text-[#303948] font-[Pretendard-Bold] text-xs sm:text-sm md:text-base"
-                  : "text-[#B1B5BA] font-[Pretendard-Medium] text-xs sm:text-sm md:text-base"
+                  ? "text-[#303948] font-[Pretendard-Bold] text-[10px] sm:text-sm md:text-base"
+                  : "text-[#B1B5BA] font-[Pretendard-Medium] text-[10px] sm:text-sm md:text-base"
               }`}
             >
               {page}
@@ -88,7 +88,7 @@ export default function Paginate(props: TPaginate) {
         ))}
       </ul>
       <Link
-        className={`ml-8 ${
+        className={`ml-1 xxs:ml-2 xs:ml-4 text-[10px] xxs:text-sm xs:text-base ${
           selectPage === props.totalCount
             ? "pointer-events-none text-[#ccc]"
             : ""
@@ -98,7 +98,7 @@ export default function Paginate(props: TPaginate) {
         &gt;
       </Link>
       <Link
-        className={`ml-8 ${
+        className={`ml-1 xxs:ml-2 xs:ml-4 text-[10px] xxs:text-sm xs:text-base ${
           selectPage === props.totalCount
             ? "pointer-events-none text-[#ccc]"
             : ""
