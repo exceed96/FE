@@ -22,7 +22,7 @@ type TMapProps = {
 
 const Map = (props: TMapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const selectMarkerRef = useRef<HTMLDivElement | null>(null);
+  const selectMarkerRef = useRef(null);
   const [mapLoading, setMapLoading] = useState<boolean>(false);
   const { setData } = useApartState((state) => ({
     setData: state.setData,
