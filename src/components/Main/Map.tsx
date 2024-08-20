@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import MapSearch from "@/Img/Main/MapSearch.svg";
 import MapMarker from "@/Img/Main/MapMarker.svg";
+import ClickMarker from "@/Img/Main/clickMarker.svg";
 import { useApartState } from "@/store/Apart";
 import { useMapLocation } from "@/store/Map";
 import { useModalState } from "@/store/Modal";
@@ -21,6 +22,7 @@ type TMapProps = {
 
 const Map = (props: TMapProps): JSX.Element => {
   const mapRef = useRef<HTMLDivElement | null>(null);
+  const selectMarkerRef = useRef<HTMLDivElement | null>(null);
   const [mapLoading, setMapLoading] = useState<boolean>(false);
   const { setData } = useApartState((state) => ({
     setData: state.setData,
@@ -61,16 +63,39 @@ const Map = (props: TMapProps): JSX.Element => {
             origin: new naver.maps.Point(0, 0),
             anchor: new naver.maps.Point(12, 34),
           },
+          animation: naver.maps.Animation.DROP,
         });
         naver.maps.Event.addListener(marker, "click", async function () {
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BASEURL}/main/detail?id=${apart.id}`
-          );
-          if (response.ok) {
-            if (window.innerWidth < 1280) setModalName("apart");
-            const data = await response.json();
-            mapLocation.setRoadAddress(data.result.info.address);
-            setData(data.result);
+          if (
+            !selectMarkerRef.current ||
+            (selectMarkerRef.current !== marker && name !== undefined)
+          ) {
+            if (selectMarkerRef.current) {
+              selectMarkerRef.current.setIcon({
+                url: MapMarker.src,
+                size: new naver.maps.Size(45, 50),
+                scaledSize: new naver.maps.Size(45, 50),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(12, 34),
+              });
+            }
+            const response = await fetch(
+              `${process.env.NEXT_PUBLIC_BASEURL}/main/detail?id=${apart.id}`
+            );
+            if (response.ok) {
+              marker.setIcon({
+                url: ClickMarker.src,
+                size: new naver.maps.Size(45, 50),
+                scaledSize: new naver.maps.Size(45, 50),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(12, 34),
+              });
+              selectMarkerRef.current = marker;
+              if (window.innerWidth < 1280) setModalName("apart");
+              const data = await response.json();
+              mapLocation.setRoadAddress(data.result.info.address);
+              setData(data.result);
+            }
           }
         });
       });
