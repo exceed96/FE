@@ -34,8 +34,7 @@ const Map = (props: TMapProps): JSX.Element => {
     setModalName: state.setModalName,
   }));
 
-  // 함수 따로 빼기
-  const getSuccess = async (position: GeolocationPosition) => {
+  const getMap = async () => {
     const lat = mapLocation.searchAreaY
       ? Number(mapLocation.searchAreaY)
       : 36.34;
@@ -78,12 +77,8 @@ const Map = (props: TMapProps): JSX.Element => {
     }
   };
 
-  const getError = () => {
-    console.log("location error");
-  };
-
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(getSuccess, getError);
+    getMap();
   }, [mapLoading, mapLocation.searchAreaX, mapLocation.searchAreaY]);
 
   return (
