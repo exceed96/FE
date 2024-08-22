@@ -48,38 +48,40 @@ export default function Paginate(props: TPaginate) {
   }, [selectPage, props.totalCount]);
 
   return (
-    <section className="w-full flex justify-center items-center py-10">
-      <Link
-        href={`/news?page=${selectPage < 6 ? "1" : selectPage - 5}&sort=${
-          dropDownState === "NEW" ? "desc" : "asc"
-        }`}
-        className={`mr-1 xxs:mr-2 xs:mr-4 xxs:text-[10px] xs:text-sm text-base ${
-          selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
-        }`}
-      >
-        &lt;&lt;
-      </Link>
-      <Link
-        href={`/news?page=${selectPage - 1}&sort=${
-          dropDownState === "NEW" ? "desc" : "asc"
-        }`}
-        className={`mr-1 xxs:mr-2 xs:mr-4 xxs:text-[10px] xs:text-sm text-base ${
-          selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
-        }`}
-      >
-        &lt;
-      </Link>
-      <ul className="flex gap-4 xxs:gap-6 xs:gap-8 md:gap-10">
+    <div className="w-full flex justify-between sm:justify-center py-10">
+      <div>
+        <Link
+          href={`/news?page=${selectPage < 6 ? "1" : selectPage - 5}&sort=${
+            dropDownState === "NEW" ? "desc" : "asc"
+          }`}
+          className={`mr-1 xxs:mr-2 xs:mr-4 text-[10px] xs:text-sm sm:text-lg ${
+            selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
+          }`}
+        >
+          &lt;&lt;
+        </Link>
+        <Link
+          href={`/news?page=${selectPage - 1}&sort=${
+            dropDownState === "NEW" ? "desc" : "asc"
+          }`}
+          className={`mr-1 xxs:mr-2 xs:mr-4 text-[10px] xs:text-sm sm:text-lg ${
+            selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
+          }`}
+        >
+          &lt;
+        </Link>
+      </div>
+      <ul className="flex items-center gap-4 xxs:gap-6 xs:gap-8 sm:gap-10">
         {pages.map((page, index) => (
           <li key={index}>
             <Link
               href={`/news?page=${page}&sort=${
                 dropDownState === "NEW" ? "desc" : "asc"
               }`}
-              className={`${
+              className={`text-[8px] xs:text-[10px] sm:text-sm ${
                 selectPage === page
-                  ? "text-[#303948] font-[Pretendard-Bold] text-[10px] sm:text-sm md:text-base"
-                  : "text-[#B1B5BA] font-[Pretendard-Medium] text-[10px] sm:text-sm md:text-base"
+                  ? "text-[#303948] font-[Pretendard-Bold]"
+                  : "text-[#B1B5BA] font-[Pretendard-Medium]"
               }`}
             >
               {page}
@@ -87,28 +89,32 @@ export default function Paginate(props: TPaginate) {
           </li>
         ))}
       </ul>
-      <Link
-        className={`ml-1 xxs:ml-2 xs:ml-4 text-[10px] xxs:text-sm xs:text-base ${
-          selectPage === props.totalCount
-            ? "pointer-events-none text-[#ccc]"
-            : ""
-        }`}
-        href={`/news?page=${selectPage + 1}&sort=desc`}
-      >
-        &gt;
-      </Link>
-      <Link
-        className={`ml-1 xxs:ml-2 xs:ml-4 text-[10px] xxs:text-sm xs:text-base ${
-          selectPage === props.totalCount
-            ? "pointer-events-none text-[#ccc]"
-            : ""
-        }`}
-        href={`/news?page=${
-          selectPage > props.totalCount - 5 ? props.totalCount : selectPage + 5
-        }&sort=desc`}
-      >
-        &gt;&gt;
-      </Link>
-    </section>
+      <div>
+        <Link
+          className={`ml-2 xs:ml-4 text-[10px] xxs:text-xs xs:text-sm sm:text-lg ${
+            selectPage === props.totalCount
+              ? "pointer-events-none text-[#ccc]"
+              : ""
+          }`}
+          href={`/news?page=${selectPage + 1}&sort=desc`}
+        >
+          &gt;
+        </Link>
+        <Link
+          className={`ml-2 xs:ml-4 text-[10px] xxs:text-xs xs:text-sm sm:text-lg ${
+            selectPage === props.totalCount
+              ? "pointer-events-none text-[#ccc]"
+              : ""
+          }`}
+          href={`/news?page=${
+            selectPage > props.totalCount - 5
+              ? props.totalCount
+              : selectPage + 5
+          }&sort=desc`}
+        >
+          &gt;&gt;
+        </Link>
+      </div>
+    </div>
   );
 }
