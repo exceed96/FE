@@ -4,6 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 import ModalContainer from "@/components/Container/ModalContainer";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export function generateMetadata(): Metadata {
   return {
@@ -36,6 +37,7 @@ export default function RootLayout({
         <div id="modalContent" />
         <ModalContainer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
