@@ -71,7 +71,7 @@ export default function Paginate(props: TPaginate) {
           &lt;
         </Link>
       </div>
-      <ul className="flex items-center justify-around w-full">
+      <ul className="flex items-center justify-around w-full sm:w-fit sm:gap-12">
         {pages.map((page, index) => (
           <li key={index}>
             <Link
