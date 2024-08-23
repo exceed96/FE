@@ -1,4 +1,6 @@
-import parse from "html-react-parser";
+"use client";
+
+import { parseContent } from "@/libs/News/NewsParser";
 
 type TNewsTitleProps = {
   title: string;
@@ -22,7 +24,7 @@ export default function NewsTitle(props: TNewsTitleProps) {
         </span>
       </section>
       <span className="font-[Pretendard-SemiBold] line-clamp-1 text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl text-[#303948] mt-1 mb-2.5">
-        {parse(props.title)}
+        {parseContent(props.title)}
       </span>
     </section>
   );
