@@ -57,6 +57,7 @@ export default function Paginate(props: TPaginate) {
           className={`mr-1 xxs:mr-2 xs:mr-4 text-[10px] xs:text-sm sm:text-lg ${
             selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
           }`}
+          prefetch={false}
         >
           &lt;&lt;
         </Link>
@@ -67,6 +68,7 @@ export default function Paginate(props: TPaginate) {
           className={`mr-1 xxs:mr-2 xs:mr-4 text-[10px] xs:text-sm sm:text-lg ${
             selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
           }`}
+          prefetch={false}
         >
           &lt;
         </Link>
@@ -83,6 +85,7 @@ export default function Paginate(props: TPaginate) {
                   ? "text-[#303948] font-[Pretendard-Bold]"
                   : "text-[#B1B5BA] font-[Pretendard-Medium]"
               }`}
+              prefetch={false}
             >
               {page}
             </Link>
@@ -97,6 +100,7 @@ export default function Paginate(props: TPaginate) {
               : ""
           }`}
           href={`/news?page=${selectPage + 1}&sort=desc`}
+          prefetch={false}
         >
           &gt;
         </Link>
@@ -111,6 +115,7 @@ export default function Paginate(props: TPaginate) {
               ? props.totalCount
               : selectPage + 5
           }&sort=desc`}
+          prefetch={false}
         >
           &gt;&gt;
         </Link>
