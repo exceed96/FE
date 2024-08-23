@@ -85,7 +85,6 @@ export default function Paginate(props: TPaginate) {
                   ? "text-[#303948] font-[Pretendard-Bold]"
                   : "text-[#B1B5BA] font-[Pretendard-Medium]"
               }`}
-              prefetch={false}
             >
               {page}
             </Link>
