@@ -38,6 +38,7 @@ const NavBar = () => {
               href={url}
               className={pathName === path ? "text-[#4764FF]" : ""}
               onClick={url !== "/" ? navClick : undefined}
+              prefetch={true}
             >
               {label}
             </Link>
