@@ -68,7 +68,7 @@ export default function Paginate(props: TPaginate) {
           className={`mr-1 xxs:mr-2 xs:mr-4 text-[10px] xs:text-sm sm:text-lg ${
             selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
           }`}
-          // prefetch={false}
+          prefetch={false}
         >
           &lt;
         </Link>
