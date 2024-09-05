@@ -23,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className="xl:px-10 xl:py-5 flex flex-col h-svh">
         <Script
           strategy="beforeInteractive"
