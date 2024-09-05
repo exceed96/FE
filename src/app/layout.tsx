@@ -88,6 +88,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+      </head>
       <body className="xl:px-10 xl:py-5 flex flex-col h-svh">
         <Script
           strategy="beforeInteractive"
