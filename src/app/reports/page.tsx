@@ -18,7 +18,7 @@ const ReportsPage = ({ params }: any): JSX.Element => {
         </section>
         <Link
           href={REPORT_URL}
-          className="bg-[#425EF0] text-white font-[Pretendard-Medium] text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl py-3 px-9 hover:shadow-xl hover:scale-110 duration-300"
+          className="bg-[#425EF0] text-white font-[Pretendard-Medium] text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl py-3 px-9 hover:scale-110 duration-300"
           target="_blank"
         >
           apartment0513@gmail.com
