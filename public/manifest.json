@@ -1,5 +1,6 @@
 {
   "theme_color": "#ffffff",
+  "id": "/",
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
@@ -7,6 +8,20 @@
   "name": "전국 부실아파트 조회",
   "short_name": "전국 부실아파트 조회",
   "description": "전국 부실아파트 조회 서비스",
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-1920x1080.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/screenshot-1080x1920.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -26,8 +41,7 @@
     {
       "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
