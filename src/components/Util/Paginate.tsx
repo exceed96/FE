@@ -16,6 +16,8 @@ export default function Paginate(props: TPaginate) {
     dropDownState: state.dropDownState,
   }));
 
+  const paginateStyle = "text-[14px] xs:text-base sm:text-lg";
+
   const generatePages = (selectPage: number, totalCount: number) => {
     let pagesArray = [];
     let startIdx = 0;
@@ -54,7 +56,7 @@ export default function Paginate(props: TPaginate) {
           href={`/news?page=${selectPage < 6 ? "1" : selectPage - 5}&sort=${
             dropDownState === "NEW" ? "desc" : "asc"
           }`}
-          className={`mr-1 xxs:mr-2 xs:mr-4 text-[10px] xs:text-sm sm:text-lg ${
+          className={`mr-1 xxs:mr-2 xs:mr-4 ${paginateStyle} ${
             selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
           }`}
           prefetch={false}
@@ -65,7 +67,7 @@ export default function Paginate(props: TPaginate) {
           href={`/news?page=${selectPage - 1}&sort=${
             dropDownState === "NEW" ? "desc" : "asc"
           }`}
-          className={`mr-1 xxs:mr-2 xs:mr-4 text-[10px] xs:text-sm sm:text-lg ${
+          className={`mr-1 xxs:mr-2 xs:mr-4 ${paginateStyle} ${
             selectPage === 1 ? "pointer-events-none text-[#ccc]" : ""
           }`}
           prefetch={false}
@@ -80,7 +82,7 @@ export default function Paginate(props: TPaginate) {
               href={`/news?page=${page}&sort=${
                 dropDownState === "NEW" ? "desc" : "asc"
               }`}
-              className={`text-[8px] xs:text-[10px] sm:text-sm ${
+              className={`text-[12px] xs:text-[14px] sm:text-base ${
                 selectPage === page
                   ? "text-[#303948] font-[Pretendard-Bold]"
                   : "text-[#B1B5BA] font-[Pretendard-Medium]"
@@ -94,7 +96,7 @@ export default function Paginate(props: TPaginate) {
       </ul>
       <div>
         <Link
-          className={`ml-2 xs:ml-4 text-[10px] xxs:text-xs xs:text-sm sm:text-lg ${
+          className={`ml-1 xxs:ml-2 xs:ml-4 ${paginateStyle} ${
             selectPage === props.totalCount
               ? "pointer-events-none text-[#ccc]"
               : ""
@@ -105,7 +107,7 @@ export default function Paginate(props: TPaginate) {
           &gt;
         </Link>
         <Link
-          className={`ml-2 xs:ml-4 text-[10px] xxs:text-xs xs:text-sm sm:text-lg ${
+          className={`ml-1 xxs:ml-2 xs:ml-4 ${paginateStyle} ${
             selectPage === props.totalCount
               ? "pointer-events-none text-[#ccc]"
               : ""
