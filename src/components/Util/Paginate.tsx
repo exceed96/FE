@@ -82,7 +82,7 @@ export default function Paginate(props: TPaginate) {
               href={`/news?page=${page}&sort=${
                 dropDownState === "NEW" ? "desc" : "asc"
               }`}
-              className={`text-[12px] xs:text-[14px] sm:text-base ${
+              className={`text-[12px] xs:text-[14px] ${
                 selectPage === page
                   ? "text-[#303948] font-[Pretendard-Bold]"
                   : "text-[#B1B5BA] font-[Pretendard-Medium]"
