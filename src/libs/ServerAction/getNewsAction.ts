@@ -9,9 +9,13 @@ export async function getNewsAction(page: string, sort: string) {
       next: { revalidate: 0 },
     };
     const result = await fetch(url, options);
-    if (result.ok) {
+    if (result.ok && result.body) {
       const data = await result.json();
-      return { data, status: result.status };
+      if (data !== undefined) {
+        return { data, status: result.status };
+      }
+    } else {
+      return { data: undefined };
     }
   } catch (error) {
     console.log(error);
