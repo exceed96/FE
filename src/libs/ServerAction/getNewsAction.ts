@@ -1,5 +1,6 @@
 export async function getNewsAction(page: string, sort: string) {
   try {
+    if (sort !== "asc" && sort !== "desc") return { data: undefined };
     const url = `${process.env.NEXT_PUBLIC_BASEURL}/news?page=${page}&sort=${sort}`;
     const options = {
       method: "get",
