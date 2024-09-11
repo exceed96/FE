@@ -1,12 +1,26 @@
-import withPWA from "next-pwa";
+import withPWAInit from "next-pwa";
 
-const isProd = process.env.NODE_ENV === "production";
+const isDev = process.env.NODE_ENV === "development";
 
-const pwaConfig = withPWA({
+const pwaConfig = withPWAInit({
   dest: "public",
-  disable: !isProd,
-  register: true,
-  skipWaiting: true,
+  buildExcludes: ["app-build-manifest.json"],
+  exclude: [
+    ({ asset, compilation }) => {
+      if (
+        asset.name.startsWith("server/") ||
+        asset.name.match(
+          /^((app-|^)build-manifest\.json|react-loadable-manifest\.json)$/
+        )
+      ) {
+        return true;
+      }
+      if (isDev && !asset.name.startsWith("static/runtime/")) {
+        return true;
+      }
+      return false;
+    },
+  ],
 });
 
 /** @type {import('next').NextConfig} */

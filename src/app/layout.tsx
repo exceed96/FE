@@ -6,6 +6,8 @@ import ModalContainer from "@/components/Container/ModalContainer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { other } from "@/libs/MetaData/SplashImg";
+import ServiceWorker from "@/components/Util/ServiceWorker";
+
 export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
@@ -13,7 +15,6 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "전국 부실아파트 조회",
   description: "전국 부실아파트를 조회할 수 있는 서비스 입니다.",
-  manifest: "/manifest.json",
   icons: {
     icon: "./favicon.ico",
     other,
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Header />
         {children}
         <div id="modalContent" />
+        <ServiceWorker />
         <ModalContainer />
         <Analytics />
         <SpeedInsights />
