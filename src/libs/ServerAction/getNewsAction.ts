@@ -1,3 +1,5 @@
+import { time } from "console";
+
 export async function getNewsAction(page: string, sort: string) {
   try {
     if (sort !== "asc" && sort !== "desc") return { data: undefined };

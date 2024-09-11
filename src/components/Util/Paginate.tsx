@@ -88,6 +88,12 @@ export default function Paginate(props: TPaginate) {
                   : "text-[#B1B5BA] font-[Pretendard-Medium]"
               }`}
               prefetch={false}
+              onClick={() => {
+                const startTime = Date.now(); // 요청 시작 시간 기록
+                console.log(
+                  `API 요청 시작 시간: ${new Date(startTime).toISOString()}`
+                );
+              }}
             >
               {page}
             </Link>
