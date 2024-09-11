@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { GiBrokenWall } from "react-icons/gi";
 
 export default function NotFound() {
